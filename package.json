@@ -11,6 +11,12 @@
   "bin": {
     "ark-express-scripts": "./bin/index.js"
   },
+  "files": [
+    "bin",
+    "build-assets",
+    "config",
+    "scripts"
+  ],
   "license": "ISC",
   "dependencies": {
     "chalk": "^4.0.0",
