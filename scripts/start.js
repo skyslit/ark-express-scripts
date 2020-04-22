@@ -18,8 +18,10 @@ const watch = compiler.watch({
         throw err;
     }
 
+    var preventDevServer = false;
     console.clear();
     if (stats.hasErrors() === true) {
+        preventDevServer = true;
         console.log(chalk.red('Compiled with error(s)'));
         stats.compilation.errors.forEach(function (errorText) {
             console.log(chalk.red(errorText.message));
@@ -34,13 +36,15 @@ const watch = compiler.watch({
     }
 
     console.log('');
-    if (dev_server) {
-        dev_server.kill();
+    if (preventDevServer === false) {
+        if (dev_server) {
+            dev_server.kill();
+        }
+        dev_server = spawn('node', [path.join(process.cwd(), './build/bundle.js')], {
+            cwd: process.cwd(),
+            stdio: "inherit"
+        });
     }
-    dev_server = spawn('node', [path.join(process.cwd(), './build/bundle.js')], {
-        cwd: process.cwd(),
-        stdio: "inherit"
-    });
 })
 
 process.on('SIGTERM', () => {
