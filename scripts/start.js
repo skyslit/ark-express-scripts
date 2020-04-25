@@ -40,7 +40,7 @@ const watch = compiler.watch({
         if (dev_server) {
             dev_server.kill();
         }
-        dev_server = spawn('node', [path.join(process.cwd(), './build/bundle.js')], {
+        dev_server = spawn('node', [path.join(process.cwd(), './build/bundle.js'), '--start'].filter(Boolean), {
             cwd: process.cwd(),
             stdio: "inherit"
         });

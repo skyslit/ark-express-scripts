@@ -22,7 +22,9 @@ module.exports = function (environment) {
         entry: path.join(process.cwd(), './src/index.ts'),
         output: {
             path: path.resolve(process.cwd(), "build"),
-            filename: 'bundle.js'
+            filename: 'bundle.js',
+            library: '',
+            libraryTarget: 'commonjs'
         },
         resolve: {
             extensions: ['.tsx', '.ts', '.js'],

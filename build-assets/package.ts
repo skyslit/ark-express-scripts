@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { ArkExpressPackage } from '@skyslit/ark-express'
 import { AuthExpressModule as DefaultModule } from './module';
+import chalk from 'chalk';
 
 const server = new ArkExpressPackage();
 
@@ -12,4 +13,13 @@ server
 });
 server.usePort(3000);
 
-server.start();
+
+const shouldStart = process.argv.indexOf('--start') > -1;
+
+if (shouldStart === true) {
+    server.start();
+} else {
+    console.log(chalk.yellow('Please start the server manually'));
+}
+
+export default server;
