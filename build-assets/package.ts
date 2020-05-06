@@ -11,7 +11,7 @@ server
     name: 'default',
     connectionString: 'mongodb://localhost:27017/default_module'
 });
-server.usePort(3000);
+server.usePort(5000);
 
 
 const shouldStart = process.argv.indexOf('--start') > -1;
